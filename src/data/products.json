@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Hunde-Sombrero",
+    "price": 15,
+    "image": "/products/hund.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Katzen-Sombrero",
+    "price": 10,
+    "image": "/products/katze.jpg"
+  }
+]

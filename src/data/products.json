@@ -3,12 +3,12 @@
     "id": 1,
     "name": "Hunde-Sombrero",
     "price": 15,
-    "image": "/products/hund.jpg"
+    "image": "/products/hund.png"
   },
   {
     "id": 2,
     "name": "Katzen-Sombrero",
     "price": 10,
-    "image": "/products/katze.jpg"
+    "image": "/products/katze.png"
   }
 ]

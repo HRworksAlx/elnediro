@@ -15,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={handwriting.className}>{children}</body>
+      <body className={handwriting.className} suppressHydrationWarning={true}>
+        {children}
+      </body>
     </html>
   );
 }

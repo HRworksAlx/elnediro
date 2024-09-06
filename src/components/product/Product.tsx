@@ -1,13 +1,15 @@
 import { ProductType } from "@/types";
 import { Card } from "../card";
 import Image from "next/image";
+import Link from "next/link";
 
 type ProductProps = {
   product: ProductType;
+  hideDetails?: boolean;
 };
 
-const Product = ({ product }: ProductProps) => {
-  const { name, image = "sombrero", price } = product;
+const Product = ({ product, hideDetails }: ProductProps) => {
+  const { name, image = "sombrero", price, id } = product;
   return (
     <Card className="max-w-xl">
       <div className="flex flex-col items-center gap-4">
@@ -15,13 +17,23 @@ const Product = ({ product }: ProductProps) => {
           <Image
             alt={name || "sombrero"}
             src={image}
-            layout="fill" // This makes the image fill its parent div
-            objectFit="cover" // This ensures the image covers the entire div
-            quality={100} // Optional: for better image quality
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            quality={100}
+            style={{ objectFit: "cover" }}
           />
         </div>
         <h1 className="text-2xl">{name}</h1>
         <h2 className="text-2xl">{price}€</h2>
+        {!hideDetails && (
+          <Link
+            className="px-4 py-2 rounded-md hover:bg-stone-200 border-stone-200 border-solid border-2"
+            href={`/product/${id}`}
+          >
+            Details
+          </Link>
+        )}
+        <div>Likes: {product.likes}</div>
       </div>
     </Card>
   );

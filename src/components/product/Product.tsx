@@ -6,9 +6,10 @@ import Link from "next/link";
 type ProductProps = {
   product: ProductType;
   hideDetails?: boolean;
+  hideLikes?: boolean;
 };
 
-const Product = ({ product, hideDetails }: ProductProps) => {
+const Product = ({ product, hideDetails, hideLikes }: ProductProps) => {
   const { name, image = "sombrero", price, id } = product;
   return (
     <Card className="max-w-xl">
@@ -33,7 +34,7 @@ const Product = ({ product, hideDetails }: ProductProps) => {
             Details
           </Link>
         )}
-        <div>Likes: {product.likes}</div>
+        {!hideLikes && <div>Likes: {product.likes}</div>}
       </div>
     </Card>
   );

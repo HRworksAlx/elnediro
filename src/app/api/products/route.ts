@@ -4,6 +4,8 @@ import { NextResponse } from "next/server";
 import path from "path";
 const filePath = path.resolve(process.cwd(), "src", "data", "products.json");
 
+const defaultImgPath = "/products/sombrero.png";
+
 const readProducts = (): ProductType[] => {
   const jsonData = fs.readFileSync(filePath, "utf-8");
   return JSON.parse(jsonData) as ProductType[];
@@ -21,15 +23,23 @@ export async function GET() {
 export async function POST(request: Request) {
   const products = readProducts();
   const { id, ...updatedData } = await request.json();
+  if (!id) {
+    const id = products.length + 1;
+    const newProduct = { id, image: defaultImgPath, ...updatedData };
+    products.push(newProduct);
+    writeProducts(products);
+    return NextResponse.json(newProduct);
+  } else {
+    const productIndex = products.findIndex((product) => product.id === id);
 
-  const productIndex = products.findIndex((product) => product.id === id);
-
-  if (productIndex === -1) {
-    return NextResponse.json({ message: "Product not found" }, { status: 404 });
+    if (productIndex === -1) {
+      return NextResponse.json(
+        { message: "Product not found" },
+        { status: 404 }
+      );
+    }
+    products[productIndex] = { ...products[productIndex], ...updatedData };
+    writeProducts(products);
+    return NextResponse.json(products[productIndex]);
   }
-
-  products[productIndex] = { ...products[productIndex], ...updatedData };
-  writeProducts(products);
-
-  return NextResponse.json(products[productIndex]);
 }

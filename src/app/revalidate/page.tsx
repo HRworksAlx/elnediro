@@ -5,7 +5,8 @@ export default async function Home() {
   return (
     <main className="bg-stone-100 h-full w-full">
       <Header />
-      <Products />
+      <Products revalidate />
+      <h1>Revalidate every 5 Seconds</h1>
     </main>
   );
 }

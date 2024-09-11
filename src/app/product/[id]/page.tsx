@@ -7,7 +7,7 @@ import React from "react";
 const revalidate = 6;
 
 const fetchProduct = async (id: string): Promise<ProductType> => {
-  const res = await fetch(`http://localhost:3001/api/product/${id}`, {
+  const res = await fetch(`http://localhost:3000/api/product/${id}`, {
     next: { revalidate },
   });
   if (!res.ok) {
@@ -24,7 +24,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
       <div className="flex flex-1 flex-col justify-between">
         <div>
           <div className="flex justify-center">
-            <Product key={product.id} product={product} hideDetails />
+            <Product key={product.id} product={product} hideDetails hideLikes />
           </div>
           <div className="flex justify-center">
             <Counter productId={product.id} />

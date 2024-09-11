@@ -8,8 +8,8 @@ const Navbar = () => (
     <nav>
       <ul className="flex justify-around text-2xl">
         <NavItem href="/">Home</NavItem>
-        <NavItem href="/impressum">About</NavItem>
-        <NavItem href="/">Admin</NavItem>
+        <NavItem href="/about">About</NavItem>
+        <NavItem href="/admin">Admin</NavItem>
       </ul>
     </nav>
   </div>

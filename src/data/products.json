@@ -4,13 +4,13 @@
     "name": "Hunde-Sombrero",
     "price": 15,
     "image": "/products/hund.png",
-    "likes": 21
+    "likes": 24
   },
   {
     "id": 2,
     "name": "Katzen-Sombrero",
     "price": 10,
     "image": "/products/katze.png",
-    "likes": 0
+    "likes": 53
   }
 ]
